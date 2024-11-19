@@ -1,0 +1,148 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.no-users {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+
+.users-container {
+  width: 50vw;
+  padding: 100px 0;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.user-container {
+  position: relative;
+  grid-column: span 1/span 1;
+  border: 1px solid #E3E3E2;
+  background-color: #FBFCF7;
+  border-radius: 10px;
+  padding: 1rem;
+  height: max-content;
+  color: #08030D;
+  transition: all 0.4s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.user-container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: translateY(-150%);
+  rotate: -18deg;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.5), transparent, rgba(255, 255, 255, 0.5));
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.user-container:hover:before {
+  transform: translateY(80%);
+}
+
+.user-container:hover {
+  scale: 1.13;
+  rotate: 6deg;
+  z-index: 10;
+  border: 1px solid #E3E3E2;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.user-container:nth-child(even):hover {
+  rotate: -6deg;
+}
+
+.user-container.remove {
+  opacity: 0;
+  rotate: 0deg !important;
+  scale: 1 !important;
+  transition-duration: all 1s !important;
+}
+
+.user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.bad-image {
+  all: unset;
+}
+
+.btn-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  cursor: pointer;
+}
+
+.btn-close::after {
+  content: "\00d7";
+  font-size: 1.7rem;
+  color: #7C7C7A;
+}
+
+.user-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+}
+
+.user-email {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.user-age {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+}
+
+.user-info {
+  font-size: 0.8rem;
+  margin: 0.5rem 0;
+  word-break: break-all;
+}
+
+@media (max-width: 1440px) {
+  .users-container {
+    width: 80vw;
+  }
+}
+
+@media (max-width: 1024px) {
+  .users-container {
+    width: 90vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .users-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .users-container {
+    width: 100%;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
